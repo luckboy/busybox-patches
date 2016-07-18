@@ -1,0 +1,14 @@
+diff -Naur busybox-1.24.2-orig/miscutils/man.c busybox-1.24.2/miscutils/man.c
+--- busybox-1.24.2-orig/miscutils/man.c	2016-02-11 12:50:37.000000000 +0100
++++ busybox-1.24.2/miscutils/man.c	2016-06-06 21:16:15.512401678 +0200
+@@ -228,8 +228,8 @@
+ 		if (!token[1])
+ 			continue;
+ 		if (strcmp("DEFINE", token[0]) == 0) {
+-			if (is_prefixed_with("pager", token[1])) {
+-				pager = xstrdup(skip_whitespace(token[1]) + 5);
++			if (is_prefixed_with(token[1], "pager")) {
++				pager = xstrdup(skip_whitespace(token[1] + 5));
+ 			}
+ 		} else
+ 		if (strcmp("MANDATORY_MANPATH"+10, token[0]) == 0 /* "MANPATH"? */
